@@ -5,7 +5,7 @@ import jwt
 from fastapi import Header, HTTPException
 from starlette.status import HTTP_401_UNAUTHORIZED
 
-from python_fastapi_cognito_jwt_verification.config import get_settings
+from app.config import get_settings
 
 jwks_client = jwt.PyJWKClient(
     f"https://cognito-idp.{get_settings().aws_default_region}.amazonaws.com/{get_settings().cognito_user_pool_id}/.well-known/jwks.json"
@@ -72,8 +72,8 @@ class CognitoJWTAuthorizer:
             signing_key: jwt.PyJWK = self.jwks_client.get_signing_key_from_jwt(token)
         except jwt.exceptions.InvalidTokenError as e:
             raise HTTPException(
-                    status_code=HTTP_401_UNAUTHORIZED, detail="Unauthorized"
-                ) from e
+                status_code=HTTP_401_UNAUTHORIZED, detail="Unauthorized"
+            ) from e
 
         try:
             """

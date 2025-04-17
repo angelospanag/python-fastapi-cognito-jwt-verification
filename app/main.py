@@ -1,6 +1,6 @@
 from fastapi import Depends, FastAPI
 
-from python_fastapi_cognito_jwt_verification.dependencies import (
+from app.dependencies import (
     cognito_jwt_authorizer_access_token,
     cognito_jwt_authorizer_id_token,
 )
