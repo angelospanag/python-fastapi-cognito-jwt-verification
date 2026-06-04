@@ -8,11 +8,16 @@ from app.dependencies import (
 app = FastAPI()
 
 
-@app.get("/protected-with-access-token", dependencies=[Depends(cognito_jwt_authorizer_access_token)])
+@app.get(
+    "/protected-with-access-token",
+    dependencies=[Depends(cognito_jwt_authorizer_access_token)],
+)
 def protected_with_access_token():
     return {"Hello": "World"}
 
 
-@app.get("/protected-with-id-token", dependencies=[Depends(cognito_jwt_authorizer_id_token)])
+@app.get(
+    "/protected-with-id-token", dependencies=[Depends(cognito_jwt_authorizer_id_token)]
+)
 def protected_with_id_token():
     return {"Hello": "World"}

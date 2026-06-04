@@ -19,12 +19,12 @@ class CognitoTokenUse(Enum):
 
 class CognitoJWTAuthorizer:
     def __init__(
-            self,
-            required_token_use: CognitoTokenUse,
-            aws_default_region: str,
-            cognito_user_pool_id: str,
-            cognito_app_client_id: str,
-            jwks_client: jwt.PyJWKClient,
+        self,
+        required_token_use: CognitoTokenUse,
+        aws_default_region: str,
+        cognito_user_pool_id: str,
+        cognito_app_client_id: str,
+        jwks_client: jwt.PyJWKClient,
     ) -> None:
         """Verify an incoming JWT using official AWS guidelines.
 
@@ -81,7 +81,7 @@ class CognitoJWTAuthorizer:
             * Verify that the algorithm used is RS256
             * Verification of audience 'aud' is taken care later when we examine if the
               token is 'id' or 'access'
-            * Verify that the token hasn't expired. Decode the token and compare the 
+            * Verify that the token hasn't expired. Decode the token and compare the
               'exp' claim to the current time.
             * The issuer (iss) claim should match your user pool. For example, a user
               pool created in the eu-west-2 region
@@ -124,7 +124,7 @@ class CognitoJWTAuthorizer:
             )
 
         """
-        The "aud" claim in an ID token and the "client_id" claim in an access token 
+        The "aud" claim in an ID token and the "client_id" claim in an access token
         should match the app client ID that was created in the Amazon Cognito user pool.
         """
         if self.required_token_use == CognitoTokenUse.ID:
