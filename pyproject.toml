@@ -3,15 +3,15 @@ name = "python-fastapi-cognito-jwt-verification"
 version = "0.1.0"
 description = "FastAPI application demonstrating Cognito JWT verification"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.15"
 dependencies = [
-    "fastapi[standard]>=0.136.3",
-    "pydantic-settings>=2.14.1",
-    "pyjwt[crypto]>=2.10.1",
+    "fastapi[standard]>=0.162.0",
+    "pydantic-settings>=2.16.2",
+    "pyjwt[crypto]>=2.15.1",
 ]
 
 [dependency-groups]
-dev = ["httpx2>=2.3.0", "pytest>=9.0.3", "ruff>=0.15.16", "ty>=0.0.43"]
+dev = ["httpx2>=2.16.0", "pytest>=9.2.0", "ruff>=0.17.4", "ty>=0.0.98"]
 
 [tool.ruff]
 lint.select = [
